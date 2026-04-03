@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>eBay on the MTA — Mandy Cheng</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #f0ebe0; --cream-mid: #d8d2c4; --white: #ffffff; --off-white: #fafaf8;
+    --black: #1a1814; --gray: #7a7469; --gray-light: #b8b2a7; --border: #e4e0d8;
+    --serif: 'Bodoni Moda', Georgia, serif; --sans: 'Jost', sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--white); color: var(--black); font-family: var(--sans); font-weight: 200; overflow-x: hidden; }
+
+  .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.96); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+  .nav-inner { display: flex; justify-content: space-between; align-items: center; padding: 0 56px; height: 64px; }
+  .nav-back { font-size: 0.6rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gray); text-decoration: none; font-weight: 300; transition: color 0.2s; }
+  .nav-back:hover { color: var(--black); }
+  .nav-name { font-family: var(--serif); font-size: 1rem; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none; color: var(--black); }
+
+  .hero { background: var(--cream); padding: 140px 56px 80px; }
+  .hero-inner { max-width: 760px; }
+  .hero-tag { font-size: 0.56rem; letter-spacing: 0.34em; text-transform: uppercase; color: var(--gray); margin-bottom: 32px; display: block; font-weight: 300; }
+  .hero-title { font-family: var(--serif); font-size: clamp(2.4rem, 5.5vw, 4.2rem); font-weight: 400; line-height: 1.1; letter-spacing: -0.015em; margin-bottom: 32px; }
+  .hero-title em { font-style: italic; }
+  .hero-rule { width: 40px; height: 1px; background: var(--gray-light); margin-bottom: 28px; }
+  .hero-meta { font-size: 0.7rem; letter-spacing: 0.12em; color: var(--gray); font-weight: 300; }
+
+  .body-wrap { max-width: 680px; margin: 0 auto; padding: 80px 56px 120px; }
+  .body-text { font-size: 0.9rem; line-height: 2.1; color: var(--gray); font-weight: 300; letter-spacing: 0.03em; }
+  .body-text p { margin-bottom: 28px; }
+  .body-text strong { color: var(--black); font-weight: 400; }
+
+  .pull-quote { border-left: 1px solid var(--black); padding: 4px 0 4px 28px; margin: 44px 0; }
+  .pull-quote p { font-family: var(--serif); font-size: 1.15rem; font-style: italic; line-height: 1.55; color: var(--black); font-weight: 400; margin: 0; }
+
+  .verdict { background: var(--off-white); border: 1px solid var(--border); padding: 32px 36px; margin: 44px 0; }
+  .verdict-label { font-size: 0.52rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gray); margin-bottom: 12px; display: block; font-weight: 300; }
+  .verdict-text { font-size: 0.85rem; line-height: 1.8; color: var(--black); font-weight: 300; }
+
+  .footer-nav { border-top: 1px solid var(--border); padding: 48px 56px; display: flex; justify-content: space-between; align-items: center; }
+  .footer-link { font-size: 0.56rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gray); text-decoration: none; font-weight: 300; transition: color 0.2s; }
+  .footer-link:hover { color: var(--black); }
+
+  @media (max-width: 700px) {
+    .nav-inner, .hero, .body-wrap, .footer-nav { padding-left: 24px; padding-right: 24px; }
+    .hero { padding-top: 100px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../index.html#writing" class="nav-back">← Writing</a>
+    <a href="../index.html" class="nav-name">Mandy Cheng</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <span class="hero-tag">Ad Critique — Feb 2026</span>
+    <h1 class="hero-title">eBay on the MTA:<br><em>Selling as Life Progression</em></h1>
+    <div class="hero-rule"></div>
+    <p class="hero-meta">How a subway platform ad quietly repositioned eBay as a platform for identity transitions — and where it falls short for younger urban users.</p>
+  </div>
+</section>
+
+<div class="body-wrap">
+  <div class="body-text">
+    <p>I recently saw a digital eBay ad on an MTA subway platform that depicted a couple reflecting on items from an earlier phase of their relationship — things in their home that no longer fit who they are now. The narrative showed them photographing those items within an eBay-style listing frame, casually discussing what they might replace them with as they moved forward together. The story concluded with the line <strong>"Find what you love. Sell what you don't."</strong> followed by "Things. People. Love." at the bottom.</p>
+
+    <p>I encountered it right after Valentine's Day, which made the message feel especially timely — emotionally resonant about renewal, timing, and letting go.</p>
+
+    <div class="pull-quote">
+      <p>eBay positions itself less as a purely transactional marketplace and more as a platform that accompanies life transitions — which ultimately strengthens its cultural relevance.</p>
+    </div>
+
+    <p><strong>What the ad does well</strong> is how it integrates storytelling with the commuter environment. In the subway, attention is fragmented. The narrative is simple enough to grasp within seconds but still layered: it reframes selling not as getting rid of things, but as part of a natural life progression. This resonated with me as a Gen Z student in New York, where dating, moving, or changing personal style are common life rhythms. It also goes along with the city's strong thrifting culture, where items regularly circulate in vintage stores.</p>
+
+    <p>By embedding this emotional lifecycle into a short story, eBay positions itself less as a purely transactional marketplace and more as a platform that accompanies life transitions — and as identities evolve, this framing ultimately strengthens its cultural relevance.</p>
+
+    <p><strong>However</strong>, the ad is less effective in translating that emotional story into perceived behavioral ease. The listing moment is portrayed almost symbolically — a photo and a post — while the real selling process can feel more involved. For someone like me who still associates eBay with a broad, less curated marketplace, the narrative sparks reconsideration but does not fully remove friction concerns.</p>
+
+    <div class="verdict">
+      <span class="verdict-label">Recommendation</span>
+      <p class="verdict-text">To better connect with younger urban users, the campaign could incorporate subtle cues that normalize eBay as part of everyday routines — perhaps visually suggesting quick steps or reinforcing how seamlessly selling fits into busy city life. A follow-up execution showing the process (not just the emotion) would close the gap between resonance and conversion.</p>
+    </div>
+
+    <p>Overall, the ad works strongly as a culturally relevant branding moment within the MTA context. Its emotional storytelling speaks to commuter mindsets and New York's cycle of constant change. The opportunity ahead is turning that goodwill into action — especially for a younger generation that trusts platforms that feel effortless, not transactional.</p>
+  </div>
+</div>
+
+<div class="footer-nav">
+  <a href="nostalgia.html" class="footer-link">← Previous Essay</a>
+  <a href="../index.html#writing" class="footer-link">Back to Writing</a>
+</div>
+
+</body>
+</html>
