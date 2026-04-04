@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block title %}{{ lesson.title }}{% endblock %}
+{% block content %}
+<section class="lesson-shell surface-card" data-reveal>
+  <div class="row align-items-start">
+    <div class="col-lg-6 mb-4 mb-lg-0">
+      <div class="video-container">
+        <iframe
+          id="lessonVideo"
+          src="{% if lesson_id == 2 %}https://www.youtube.com/embed/inEPlZZ_SfA?enablejsapi=1{% elif lesson_id == 3 %}https://www.youtube.com/embed/OMRUIrbZDpM?start=1&enablejsapi=1{% else %}about:blank{% endif %}"
+          title="Lesson Video"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <div class="speed-controls mt-3 text-center">
+        <button class="btn btn-sm btn-outline-secondary speed-btn" data-speed="0.75">0.75x</button>
+        <button class="btn btn-sm btn-outline-secondary speed-btn" data-speed="1">1x</button>
+        <button class="btn btn-sm btn-outline-secondary speed-btn" data-speed="1.25">1.25x</button>
+        <button class="btn btn-sm btn-outline-secondary speed-btn" data-speed="1.5">1.5x</button>
+      </div>
+    </div>
+
+    <div class="col-lg-6">
+      <header class="section-header">
+        <p class="eyebrow">Lesson {{ lesson_id }}</p>
+        <h1>{{ lesson.title }}</h1>
+        <p>{{ lesson.content }}</p>
+      </header>
+
+      {% if lesson_id == 2 %}
+      <div class="concept-grid">
+        <article class="concept-card">
+          <h3>Calories</h3>
+          <p>The energy your body uses for movement, focus, and recovery.</p>
+        </article>
+        <article class="concept-card">
+          <h3>Protein</h3>
+          <p>Supports muscle maintenance, fullness, and tissue repair.</p>
+        </article>
+        <article class="concept-card">
+          <h3>Healthy Fats</h3>
+          <p>Essential for brain function, hormones, and nutrient absorption.</p>
+        </article>
+      </div>
+      <div class="section-actions left mt-4">
+        <a href="{{ url_for('flipcards', lesson_id=2, category='protein') }}" class="btn btn-primary">
+          Start Nutrition Cards
+        </a>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="lesson-nav">
+    {% if prev_id %}
+    <a href="{{ url_for('learn', lesson_id=prev_id) }}" class="btn btn-outline-secondary">&larr; Previous</a>
+    {% else %}
+    <span></span>
+    {% endif %}
+
+    {% if next_id %}
+    <a href="{{ url_for('learn', lesson_id=next_id) }}" class="btn btn-primary">Next &rarr;</a>
+    {% else %}
+    <a href="{{ url_for('game') }}" class="btn btn-primary">Start Cooking Game</a>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

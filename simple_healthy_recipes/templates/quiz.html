@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block title %}Quiz {{ quiz_id }}{% endblock %}
+{% block content %}
+<section class="quiz-game-container surface-card" data-reveal>
+  <div class="quiz-header">
+    <div class="quiz-progress">
+      <div class="progress-info">
+        <span class="current-question">{{ quiz_id }}</span>
+        <span class="total-questions">/ {{ total_quizzes }}</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-bar" style="width: {{ (quiz_id / total_quizzes) * 100 }}%"></div>
+      </div>
+    </div>
+    <div class="quiz-timer">
+      <i class="fas fa-clock"></i>
+      <span id="quizTimer">00:12</span>
+    </div>
+  </div>
+
+  <div class="quiz-question">
+    <div class="question-mark">?</div>
+    <h3>{{ quiz.question }}</h3>
+  </div>
+
+  <form method="post" action="{{ url_for('quiz', quiz_id=quiz_id) }}" class="quiz-form" id="quizForm">
+    <div class="quiz-options">
+      {% for opt in quiz.options %}
+      <label class="quiz-option {% if opt == quiz.answer %}correct{% else %}incorrect{% endif %}">
+        <input type="radio" name="answer" value="{{ opt }}" required class="d-none">
+        <div class="option-card">
+          <div class="option-content">
+            <div class="option-letter">{{ loop.index }}</div>
+            <div class="option-text">{{ opt }}</div>
+          </div>
+          <div class="option-feedback">
+            <i class="fas fa-check correct-icon"></i>
+            <i class="fas fa-times incorrect-icon"></i>
+          </div>
+        </div>
+      </label>
+      {% endfor %}
+    </div>
+  </form>
+
+  <div class="quiz-feedback" id="quizFeedback" style="display: none;">
+    <div class="feedback-content"></div>
+  </div>
+</section>
+
+<script>
+  const currentQuiz = {{ quiz_id }};
+  const totalQuizzes = {{ total_quizzes }};
+</script>
+{% endblock %}

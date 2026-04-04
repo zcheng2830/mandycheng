@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Protein Flip Cards</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="static/style.css">
+</head>
+<body class="theme-base">
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html"><span class="brand-mark">Nutri</span>Cook</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNav"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="safety.html">Learn</a></li>
+          <li class="nav-item dropdown active">
+            <a class="nav-link dropdown-toggle" href="#" id="ingMenu" data-toggle="dropdown">Ingredients</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="protein.html">Proteins</a>
+              <a class="dropdown-item" href="vegetable.html">Vegetables</a>
+              <a class="dropdown-item" href="base.html">Bases</a>
+            </div>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="quiz.html">Quiz</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="site-shell">
+    <div class="container py-4">
+      <section class="lesson-shell surface-card" data-reveal>
+        <header class="section-header text-center">
+          <p class="eyebrow">Interactive Nutrition Cards</p>
+          <h1>Protein Flip Cards</h1>
+          <p>Tap or click a card to reveal calories, protein, fats, and key nutrients.</p>
+        </header>
+
+        <div class="category-switch">
+          <a href="protein.html" class="chip-link active">Protein</a>
+          <a href="vegetable.html" class="chip-link">Vegetable</a>
+          <a href="base.html" class="chip-link">Base</a>
+        </div>
+
+        <div class="ingredients-grid">
+          <div class="flip-card" tabindex="0">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <div class="image-container"><img src="static/images/eggs.svg" class="ingredient-img" alt="Eggs"></div>
+                <h5>Eggs</h5>
+                <p class="flip-hint">Click to reveal nutrition info</p>
+              </div>
+              <div class="flip-card-back">
+                <h5>Eggs</h5>
+                <p>Calories: 70 kcal</p>
+                <p>Protein: 6 g</p>
+                <p>Fats: 5 g</p>
+                <div class="nutrients-chip">
+                  <span class="badge">B12</span>
+                  <span class="badge">Selenium</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flip-card" tabindex="0">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <div class="image-container"><img src="static/images/salmon.svg" class="ingredient-img" alt="Salmon"></div>
+                <h5>Salmon</h5>
+                <p class="flip-hint">Click to reveal nutrition info</p>
+              </div>
+              <div class="flip-card-back">
+                <h5>Salmon</h5>
+                <p>Calories: 206 kcal</p>
+                <p>Protein: 23 g</p>
+                <p>Fats: 12 g</p>
+                <div class="nutrients-chip">
+                  <span class="badge">Vitamin D</span>
+                  <span class="badge">B12</span>
+                  <span class="badge">Omega-3s</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flip-card" tabindex="0">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <div class="image-container"><img src="static/images/beef.svg" class="ingredient-img" alt="Beef"></div>
+                <h5>Beef (90% lean)</h5>
+                <p class="flip-hint">Click to reveal nutrition info</p>
+              </div>
+              <div class="flip-card-back">
+                <h5>Beef (90% lean)</h5>
+                <p>Calories: 180 kcal</p>
+                <p>Protein: 22 g</p>
+                <p>Fats: 9 g</p>
+                <div class="nutrients-chip">
+                  <span class="badge">Iron</span>
+                  <span class="badge">Zinc</span>
+                  <span class="badge">Vitamin B12</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flip-card" tabindex="0">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <div class="image-container"><img src="static/images/tofu.svg" class="ingredient-img" alt="Tofu"></div>
+                <h5>Tofu</h5>
+                <p class="flip-hint">Click to reveal nutrition info</p>
+              </div>
+              <div class="flip-card-back">
+                <h5>Tofu</h5>
+                <p>Calories: 190 kcal</p>
+                <p>Protein: 20 g</p>
+                <p>Fats: 12 g</p>
+                <div class="nutrients-chip">
+                  <span class="badge">Calcium</span>
+                  <span class="badge">Iron</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flip-card" tabindex="0">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <div class="image-container"><img src="static/images/chicken.svg" class="ingredient-img" alt="Chicken"></div>
+                <h5>Chicken</h5>
+                <p class="flip-hint">Click to reveal nutrition info</p>
+              </div>
+              <div class="flip-card-back">
+                <h5>Chicken</h5>
+                <p>Calories: 165 kcal</p>
+                <p>Protein: 31 g</p>
+                <p>Fats: 3.6 g</p>
+                <div class="nutrients-chip">
+                  <span class="badge">Vitamin B6</span>
+                  <span class="badge">Niacin</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lesson-nav mt-4">
+          <a href="learn.html" class="btn btn-outline-secondary">&larr; Back to Lesson</a>
+          <a href="vegetable.html" class="btn btn-primary">Next Category &rarr;</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="static/script.js"></script>
+</body>
+</html>

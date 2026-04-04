@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cooking Game</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="static/style.css">
+</head>
+<body class="theme-base">
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html"><span class="brand-mark">Nutri</span>Cook</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNav"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item active"><a class="nav-link" href="safety.html">Learn</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="ingMenu" data-toggle="dropdown">Ingredients</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="protein.html">Proteins</a>
+              <a class="dropdown-item" href="vegetable.html">Vegetables</a>
+              <a class="dropdown-item" href="base.html">Bases</a>
+            </div>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="quiz.html">Quiz</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="site-shell">
+    <div class="container py-4">
+      <section class="lesson-shell surface-card" data-reveal>
+        <header class="section-header">
+          <p class="eyebrow">Cooking Challenge</p>
+          <h1>Build the Perfect Pasta Pot</h1>
+          <p>Drag ingredients into the pot in the correct sequence to unlock the next quiz.</p>
+        </header>
+
+        <div class="row">
+          <div class="col-lg-7 mb-4 mb-lg-0">
+            <div class="game-board">
+              <h3 class="mb-3">Drag ingredients to the pot in order:</h3>
+              <div class="drag-drop-container">
+                <div class="ingredients-list">
+                  <div class="drag-item" draggable="true" data-step="1">
+                    <div class="ingredient-icon">
+                      <img src="static/images/water.svg" alt="Water" class="ingredient-image">
+                    </div>
+                    <span>Water (4 quarts)</span>
+                  </div>
+                  <div class="drag-item" draggable="true" data-step="2">
+                    <div class="ingredient-icon">
+                      <img src="static/images/salt.svg" alt="Salt" class="ingredient-image">
+                    </div>
+                    <span>Salt (1 tbsp)</span>
+                  </div>
+                  <div class="drag-item" draggable="true" data-step="3">
+                    <div class="ingredient-icon">
+                      <img src="static/images/Pasta.svg" alt="Pasta" class="ingredient-image">
+                    </div>
+                    <span>Pasta</span>
+                  </div>
+                </div>
+
+                <div class="cooking-pot drop-area">
+                  <div class="pot-icon"><i class="fas fa-utensils"></i></div>
+                  <div class="pot-label">Cooking Pot</div>
+                  <div class="ingredients-added"></div>
+                </div>
+
+                <div class="instructions">
+                  <ol class="steps-list">
+                    <li class="step" data-step="1">1. Boil water</li>
+                    <li class="step" data-step="2">2. Add salt</li>
+                    <li class="step" data-step="3">3. Cook pasta</li>
+                  </ol>
+                </div>
+
+                <button id="checkRecipeBtn" class="btn btn-primary btn-lg mt-4" disabled>Finish Cooking &rarr;</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-5">
+            <aside class="cooking-tips p-4 rounded">
+              <h3><i class="fas fa-lightbulb"></i> Pro Tips</h3>
+              <ul class="tips-list">
+                <li>Use at least 4 quarts of water per pound of pasta.</li>
+                <li>Salt after boiling starts for faster heat-up.</li>
+                <li>Stir in the first minute to prevent sticking.</li>
+                <li>Taste-test one minute early for ideal texture.</li>
+              </ul>
+            </aside>
+            <div class="alert alert-warning mt-3 mb-0">
+              <small><i class="fas fa-info-circle"></i> Complete all 3 steps in order to unlock the quiz.</small>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-success text-white">
+          <h5 class="modal-title"><i class="fas fa-check-circle"></i> Perfect Pasta!</h5>
+          <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="modal-body text-center">
+          <div class="celebration-icon mb-3"><i class="fas fa-pizza-slice fa-3x text-success"></i></div>
+          <h4>You nailed the sequence.</h4>
+          <p class="text-muted mb-0">Now test your knowledge in the nutrition quiz.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" id="successModalButton">Start Quiz</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="static/script.js"></script>
+  <script>
+    document.getElementById('successModalButton').addEventListener('click', function() {
+      window.location.href = 'quiz.html';
+    });
+  </script>
+</body>
+</html>

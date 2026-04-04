@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<section class="home-hero surface-card" data-reveal>
+  <p class="eyebrow">Simple Healthy Recipes</p>
+  <h1 class="home-title">Cook better. Eat smarter. Feel stronger.</h1>
+  <p class="home-description">
+    NutriCook combines quick lessons, interactive ingredient cards, and a playful cooking challenge so
+    beginners can build kitchen confidence without complexity.
+  </p>
+  <div class="hero-actions">
+    <a href="{{ url_for('learn', lesson_id=1) }}" class="btn btn-primary btn-lg">Start Learning</a>
+    <a href="{{ url_for('quiz', quiz_id=1) }}" class="btn btn-outline-secondary btn-lg">Take the Quiz</a>
+  </div>
+  <div class="hero-metrics">
+    <div class="metric-card">
+      <span class="metric-value">3</span>
+      <span class="metric-label">Hands-on lessons</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-value">15</span>
+      <span class="metric-label">Nutrition cards</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-value">1</span>
+      <span class="metric-label">Pasta mini game</span>
+    </div>
+  </div>
+</section>
+
+<section class="feature-strip" data-reveal>
+  <article class="feature-item">
+    <i class="fas fa-shield-alt"></i>
+    <h3>Safety First</h3>
+    <p>Learn practical habits that make your kitchen safer from day one.</p>
+  </article>
+  <article class="feature-item">
+    <i class="fas fa-seedling"></i>
+    <h3>Nutrition Basics</h3>
+    <p>Flip through protein, vegetable, and base cards with real nutrient data.</p>
+  </article>
+  <article class="feature-item">
+    <i class="fas fa-utensils"></i>
+    <h3>Cook by Doing</h3>
+    <p>Practice sequence and timing through an interactive pasta challenge.</p>
+  </article>
+</section>
+{% endblock %}

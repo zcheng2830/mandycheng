@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}Results{% endblock %}
+{% block content %}
+<section class="results-shell surface-card text-center" data-reveal>
+  <p class="eyebrow">Quiz Complete</p>
+  <h1>{% if score == total %}Perfect Score{% else %}Your Results{% endif %}</h1>
+
+  <div class="result-score">
+    <span>{{ score }}</span>/{{ total }}
+  </div>
+
+  <p class="lead mt-3">
+    {% if score == total %}
+    Outstanding. You are ready to cook with confidence.
+    {% elif score / total >= 0.7 %}
+    Strong result. Review once more to lock in mastery.
+    {% else %}
+    Great start. Revisit the lessons and try again.
+    {% endif %}
+  </p>
+
+  <div class="hero-actions justify-content-center mt-4">
+    <a href="{{ url_for('home') }}" class="btn btn-primary btn-lg">Back to Home</a>
+    <a href="{{ url_for('learn', lesson_id=1) }}" class="btn btn-outline-secondary btn-lg">Review Lessons</a>
+  </div>
+</section>
+{% endblock %}

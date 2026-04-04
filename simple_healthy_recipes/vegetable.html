@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vegetable Flip Cards</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="static/style.css">
+</head>
+<body class="theme-base">
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html"><span class="brand-mark">Nutri</span>Cook</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNav"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="safety.html">Learn</a></li>
+          <li class="nav-item dropdown active">
+            <a class="nav-link dropdown-toggle" href="#" id="ingMenu" data-toggle="dropdown">Ingredients</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="protein.html">Proteins</a>
+              <a class="dropdown-item" href="vegetable.html">Vegetables</a>
+              <a class="dropdown-item" href="base.html">Bases</a>
+            </div>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="quiz.html">Quiz</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="site-shell">
+    <div class="container py-4">
+      <section class="lesson-shell surface-card" data-reveal>
+        <header class="section-header text-center">
+          <p class="eyebrow">Interactive Nutrition Cards</p>
+          <h1>Vegetable Flip Cards</h1>
+          <p>Tap or click a card to reveal calories, protein, fats, and key nutrients.</p>
+        </header>
+
+        <div class="category-switch">
+          <a href="protein.html" class="chip-link">Protein</a>
+          <a href="vegetable.html" class="chip-link active">Vegetable</a>
+          <a href="base.html" class="chip-link">Base</a>
+        </div>
+
+        <div class="ingredients-grid">
+          <div class="flip-card" tabindex="0">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <div class="image-container"><img src="static/images/bell_peppers.svg" class="ingredient-img" alt="Bell Peppers"></div>
+                <h5>Bell Peppers</h5>
+                <p class="flip-hint">Click to reveal nutrition info</p>
+              </div>
+              <div class="flip-card-back">
+                <h5>Bell Peppers</h5>
+                <p>Calories: 45 kcal</p>
+                <p>Protein: 1 g</p>
+                <p>Fats: 0 g</p>
+                <div class="nutrients-chip">
+                  <span class="badge">Vitamin A</span>
+                  <span class="badge">Vitamin C</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flip-card" tabindex="0">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <div class="image-container"><img src="static/images/broccoli.svg" class="ingredient-img" alt="Broccoli"></div>
+                <h5>Broccoli</h5>
+                <p class="flip-hint">Click to reveal nutrition info</p>
+              </div>
+              <div class="flip-card-back">
+                <h5>Broccoli</h5>
+                <p>Calories: 55 kcal</p>
+                <p>Protein: 4 g</p>
+                <p>Fats: 0 g</p>
+                <div class="nutrients-chip">
+                  <span class="badge">Vitamin C</span>
+                  <span class="badge">Vitamin K</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flip-card" tabindex="0">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <div class="image-container"><img src="static/images/bok_choy.svg" class="ingredient-img" alt="Bok Choy"></div>
+                <h5>Bok Choy</h5>
+                <p class="flip-hint">Click to reveal nutrition info</p>
+              </div>
+              <div class="flip-card-back">
+                <h5>Bok Choy</h5>
+                <p>Calories: 20 kcal</p>
+                <p>Protein: 2 g</p>
+                <p>Fats: 0 g</p>
+                <div class="nutrients-chip">
+                  <span class="badge">Vitamin A</span>
+                  <span class="badge">Vitamin C</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flip-card" tabindex="0">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <div class="image-container"><img src="static/images/carrots.svg" class="ingredient-img" alt="Carrots"></div>
+                <h5>Carrots</h5>
+                <p class="flip-hint">Click to reveal nutrition info</p>
+              </div>
+              <div class="flip-card-back">
+                <h5>Carrots</h5>
+                <p>Calories: 50 kcal</p>
+                <p>Protein: 1 g</p>
+                <p>Fats: 0 g</p>
+                <div class="nutrients-chip">
+                  <span class="badge">Beta-carotene</span>
+                  <span class="badge">Vitamin A</span>
+                  <span class="badge">Vitamin K</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flip-card" tabindex="0">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <div class="image-container"><img src="static/images/spinach.svg" class="ingredient-img" alt="Spinach"></div>
+                <h5>Spinach</h5>
+                <p class="flip-hint">Click to reveal nutrition info</p>
+              </div>
+              <div class="flip-card-back">
+                <h5>Spinach</h5>
+                <p>Calories: 7 kcal</p>
+                <p>Protein: 1 g</p>
+                <p>Fats: 0 g</p>
+                <div class="nutrients-chip">
+                  <span class="badge">Iron</span>
+                  <span class="badge">Vitamin K</span>
+                  <span class="badge">Folate</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lesson-nav mt-4">
+          <a href="protein.html" class="btn btn-outline-secondary">&larr; Previous Category</a>
+          <a href="base.html" class="btn btn-primary">Next Category &rarr;</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="static/script.js"></script>
+</body>
+</html>

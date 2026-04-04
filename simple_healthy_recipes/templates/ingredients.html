@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block title %}{{ category|capitalize }} Flip Cards{% endblock %}
+{% block content %}
+<section class="lesson-shell surface-card" data-reveal>
+  <header class="section-header text-center">
+    <p class="eyebrow">Interactive Nutrition Cards</p>
+    <h1>{{ category|capitalize }} Flip Cards</h1>
+    <p>Tap or click a card to reveal calories, protein, fats, and key nutrients.</p>
+  </header>
+
+  <div class="category-switch">
+    <a href="{{ url_for('flipcards', lesson_id=lesson_id, category='protein') }}" class="chip-link {{ 'active' if category == 'protein' else '' }}">Protein</a>
+    <a href="{{ url_for('flipcards', lesson_id=lesson_id, category='vegetable') }}" class="chip-link {{ 'active' if category == 'vegetable' else '' }}">Vegetable</a>
+    <a href="{{ url_for('flipcards', lesson_id=lesson_id, category='base') }}" class="chip-link {{ 'active' if category == 'base' else '' }}">Base</a>
+  </div>
+
+  <div class="ingredients-grid">
+    {% for ing in ingredients %}
+    <div class="flip-card" tabindex="0">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <div class="image-container">
+            <img src="{{ url_for('static', filename='images/' ~ ing.id ~ '.svg') }}" class="ingredient-img" alt="{{ ing.name }}">
+          </div>
+          <h5>{{ ing.name }}</h5>
+          <p class="flip-hint">Click to reveal nutrition info</p>
+        </div>
+        <div class="flip-card-back">
+          <h5>{{ ing.name }}</h5>
+          <p>Calories: {{ ing.calories }} kcal</p>
+          <p>Protein: {{ ing.protein_g }} g</p>
+          <p>Fats: {{ ing.fats_g }} g</p>
+          <div class="nutrients-chip">
+            {% if ing.nutrients %}
+            {% for nut in ing.nutrients %}
+            <span class="badge">{{ nut }}</span>
+            {% endfor %}
+            {% else %}
+            <span class="badge">No highlighted micronutrients</span>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="lesson-nav mt-4">
+    {% if prev_category %}
+    <a href="{{ url_for('flipcards', lesson_id=lesson_id, category=prev_category) }}" class="btn btn-outline-secondary">&larr; Previous Category</a>
+    {% else %}
+    <a href="{{ url_for('learn', lesson_id=lesson_id) }}" class="btn btn-outline-secondary">&larr; Back to Lesson</a>
+    {% endif %}
+
+    {% if next_category %}
+    <a href="{{ url_for('flipcards', lesson_id=lesson_id, category=next_category) }}" class="btn btn-primary">Next Category &rarr;</a>
+    {% else %}
+    <a href="{{ url_for('learn', lesson_id=lesson_id+1) }}" class="btn btn-primary">Continue to Next Lesson &rarr;</a>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

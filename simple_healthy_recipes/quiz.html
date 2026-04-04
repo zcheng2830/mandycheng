@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="static/style.css">
+</head>
+<body class="theme-base">
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html"><span class="brand-mark">Nutri</span>Cook</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNav"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="safety.html">Learn</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="ingMenu" data-toggle="dropdown">Ingredients</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="protein.html">Proteins</a>
+              <a class="dropdown-item" href="vegetable.html">Vegetables</a>
+              <a class="dropdown-item" href="base.html">Bases</a>
+            </div>
+          </li>
+          <li class="nav-item active"><a class="nav-link" href="quiz.html">Quiz</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="site-shell">
+    <div class="container py-4">
+      <section class="quiz-game-container surface-card" data-reveal>
+        <div class="quiz-header">
+          <div class="quiz-progress">
+            <div class="progress-info">
+              <span class="current-question" id="currentQ">1</span>
+              <span class="total-questions">/ 10</span>
+            </div>
+            <div class="progress-track">
+              <div class="progress-bar" id="progressBar" style="width: 10%"></div>
+            </div>
+          </div>
+          <div class="quiz-timer">
+            <i class="fas fa-clock"></i>
+            <span id="quizTimer">00:12</span>
+          </div>
+        </div>
+
+        <div class="quiz-question">
+          <div class="question-mark">?</div>
+          <h3 id="questionText"></h3>
+        </div>
+
+        <div class="quiz-options" id="optionsContainer"></div>
+
+        <div class="quiz-feedback" id="quizFeedback" style="display: none;">
+          <div class="feedback-content" id="feedbackContent"></div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    const quizzes = [
+      { question: "Which of the following is a key kitchen safety rule?", options: ["Use one cutting board for all ingredients", "Never check food temperature", "Wash hands before handling food", "Skip cleaning work surfaces"], answer: "Wash hands before handling food" },
+      { question: "What is the main purpose of calories?", options: ["Build muscles", "Improve digestion", "Provide energy for your body", "Support brain health"], answer: "Provide energy for your body" },
+      { question: "Which protein source has the highest protein content per serving?", options: ["Tofu", "Chicken", "Salmon", "Beef"], answer: "Chicken" },
+      { question: "Which nutrient is essential for brain health?", options: ["Fiber", "Fats", "Iron", "Vitamin A"], answer: "Fats" },
+      { question: "What vitamin do carrots and sweet potatoes have in common?", options: ["Vitamin K", "Vitamin D", "Vitamin A", "Vitamin B6"], answer: "Vitamin A" },
+      { question: "Which vegetable provides the most protein per serving?", options: ["Bell Peppers", "Broccoli", "Carrots", "Spinach"], answer: "Broccoli" },
+      { question: "What is the first step in the pasta cooking process?", options: ["Add salt", "Cook pasta", "Drain pasta", "Boil water"], answer: "Boil water" },
+      { question: "Which base contains the highest number of calories per serving?", options: ["Sweet Potato", "White Rice", "Udon Noodles", "Whole Wheat Bread"], answer: "Udon Noodles" },
+      { question: "What nutrient is found in both salmon and eggs?", options: ["Vitamin C", "Vitamin D", "Vitamin A", "Iron"], answer: "Vitamin D" },
+      { question: "Which food contains both fiber and magnesium?", options: ["Brown Rice", "Chicken", "Beef", "Broccoli"], answer: "Brown Rice" }
+    ];
+
+    const TIMER_SECONDS = 12;
+    let currentIndex = 0;
+    let score = 0;
+    let timerInterval = null;
+    let answered = false;
+
+    function numberToLetter(n) { return String.fromCharCode(64 + n); }
+
+    function renderQuestion() {
+      answered = false;
+      const q = quizzes[currentIndex];
+      document.getElementById('currentQ').textContent = currentIndex + 1;
+      document.getElementById('progressBar').style.width = ((currentIndex + 1) / quizzes.length * 100) + '%';
+      document.getElementById('questionText').textContent = q.question;
+      document.getElementById('quizFeedback').style.display = 'none';
+
+      const container = document.getElementById('optionsContainer');
+      container.innerHTML = '';
+      q.options.forEach(function(opt, i) {
+        const isCorrect = opt === q.answer;
+        const label = document.createElement('label');
+        label.className = 'quiz-option ' + (isCorrect ? 'correct' : 'incorrect');
+        label.innerHTML =
+          '<input type="radio" name="answer" value="' + opt + '" class="d-none">' +
+          '<div class="option-card">' +
+            '<div class="option-content">' +
+              '<div class="option-letter">' + numberToLetter(i + 1) + '</div>' +
+              '<div class="option-text">' + opt + '</div>' +
+            '</div>' +
+            '<div class="option-feedback">' +
+              '<i class="fas fa-check correct-icon"></i>' +
+              '<i class="fas fa-times incorrect-icon"></i>' +
+            '</div>' +
+          '</div>';
+        container.appendChild(label);
+      });
+
+      container.querySelectorAll('input[name="answer"]').forEach(function(input) {
+        input.addEventListener('change', handleAnswer);
+      });
+
+      startTimer();
+    }
+
+    function startTimer() {
+      clearInterval(timerInterval);
+      let remaining = TIMER_SECONDS;
+      const display = document.getElementById('quizTimer');
+      display.textContent = '00:' + String(remaining).padStart(2, '0');
+      display.style.color = '';
+
+      timerInterval = setInterval(function() {
+        remaining--;
+        display.textContent = '00:' + String(Math.max(remaining, 0)).padStart(2, '0');
+        if (remaining <= 3) display.style.color = '#b91c1c';
+        if (remaining <= 0) {
+          clearInterval(timerInterval);
+          if (!answered) { answered = true; showFeedback(false, quizzes[currentIndex].answer); autoAdvance(1800); }
+        }
+      }, 1000);
+    }
+
+    function handleAnswer() {
+      if (answered) return;
+      answered = true;
+      clearInterval(timerInterval);
+
+      var selected = document.querySelector('input[name="answer"]:checked');
+      if (!selected) return;
+
+      document.querySelectorAll('input[name="answer"]').forEach(function(inp) { inp.disabled = true; });
+
+      var isCorrect = selected.value === quizzes[currentIndex].answer;
+      if (isCorrect) score++;
+      showFeedback(isCorrect, quizzes[currentIndex].answer);
+      autoAdvance(isCorrect ? 900 : 1400);
+    }
+
+    function showFeedback(isCorrect, correctAnswer) {
+      var fb = document.getElementById('feedbackContent');
+      fb.innerHTML = isCorrect
+        ? '<div class="feedback-correct"><i class="fas fa-check-circle"></i><h4>Correct!</h4></div>'
+        : '<div class="feedback-wrong"><i class="fas fa-times-circle"></i><h4>Not quite</h4><p>Correct answer: <strong>' + correctAnswer + '</strong></p></div>';
+      document.getElementById('quizFeedback').style.display = 'block';
+    }
+
+    function autoAdvance(delay) {
+      setTimeout(function() {
+        currentIndex++;
+        if (currentIndex < quizzes.length) {
+          renderQuestion();
+        } else {
+          localStorage.setItem('quizScore', score);
+          localStorage.setItem('quizTotal', quizzes.length);
+          window.location.href = 'results.html';
+        }
+      }, delay);
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      score = 0;
+      currentIndex = 0;
+      renderQuestion();
+
+      var nav = document.querySelector('.navbar');
+      if (nav) {
+        window.addEventListener('scroll', function() {
+          nav.style.boxShadow = window.scrollY > 20 ? '0 8px 20px rgba(15,23,42,0.08)' : '';
+        }, { passive: true });
+      }
+
+      document.querySelectorAll('[data-reveal]').forEach(function(el, i) {
+        el.style.setProperty('--reveal-index', String(i));
+      });
+      document.body.classList.add('page-ready');
+    });
+  </script>
+</body>
+</html>
