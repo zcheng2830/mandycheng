@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Visual Art — Mandy Cheng</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #f0ebe0;
+    --cream-mid: #d8d2c4;
+    --white: #ffffff;
+    --off-white: #fafaf8;
+    --black: #1a1814;
+    --gray: #7a7469;
+    --gray-light: #b8b2a7;
+    --border: #e4e0d8;
+    --serif: 'Bodoni Moda', 'Didot', Georgia, serif;
+    --sans: 'Jost', 'Futura', sans-serif;
+    --nav-h: 72px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--white);
+    color: var(--black);
+    font-family: var(--sans);
+    font-weight: 200;
+    overflow-x: hidden;
+  }
+
+  .cursor { position: fixed; width: 6px; height: 6px; background: var(--black); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: width .15s, height .15s; }
+  .cursor-ring { position: fixed; width: 30px; height: 30px; border: 1px solid var(--black); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%,-50%); opacity: 0.22; transition: width .2s, height .2s, opacity .2s; }
+
+  header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    background: var(--cream);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 56px; height: var(--nav-h);
+  }
+  .brand {
+    font-family: var(--serif); font-size: 1.1rem; font-weight: 400;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--black); text-decoration: none;
+  }
+  .nav-links { display: flex; align-items: center; gap: 40px; }
+  .nav-links a {
+    font-size: 0.6rem; letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--gray); text-decoration: none; font-weight: 300;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--black); }
+
+  .page-hero {
+    background: var(--cream); padding-top: var(--nav-h);
+    position: relative; overflow: hidden;
+  }
+  .page-hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    background-size: 180px 180px; opacity: 0.45;
+    pointer-events: none; z-index: 0;
+  }
+  .page-hero-inner {
+    position: relative; z-index: 1;
+    max-width: 1300px; margin: 0 auto;
+    padding: 100px 56px 80px;
+  }
+  .page-hero-eyebrow {
+    font-size: 0.54rem; letter-spacing: 0.36em; text-transform: uppercase;
+    color: var(--gray); font-weight: 300; margin-bottom: 32px;
+    display: flex; align-items: center; gap: 14px;
+    opacity: 0; animation: fadeUp .9s ease .2s forwards;
+  }
+  .page-hero-eyebrow::before {
+    content: ''; display: inline-block; width: 28px; height: 1px;
+    background: var(--gray-light); flex-shrink: 0;
+  }
+  .page-hero-title {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(3rem, 7vw, 6rem);
+    line-height: 0.92; letter-spacing: -0.02em;
+    opacity: 0; animation: fadeUp .9s ease .4s forwards;
+  }
+  .page-hero-title em { font-style: italic; }
+  .page-hero-desc {
+    max-width: 520px; margin-top: 36px;
+    font-size: 0.82rem; line-height: 2.05;
+    letter-spacing: 0.04em; color: var(--gray); font-weight: 300;
+    opacity: 0; animation: fadeUp .9s ease .6s forwards;
+  }
+
+  .divider-full { height: 1px; background: var(--border); }
+
+  .gallery { max-width: 1300px; margin: 0 auto; padding: 100px 56px 140px; }
+  .gallery-piece {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+    align-items: start;
+    padding: 80px 0;
+    border-top: 1px solid var(--border);
+  }
+  .gallery-piece:first-child { border-top: none; padding-top: 0; }
+
+  .gallery-img-wrap {
+    overflow: hidden;
+    background: var(--off-white);
+    border: 1px solid var(--border);
+  }
+  .gallery-img-wrap img {
+    display: block; width: 100%;
+    transition: transform 0.6s cubic-bezier(0.16,1,0.3,1);
+  }
+  .gallery-img-wrap:hover img {
+    transform: scale(1.02);
+  }
+
+  .gallery-meta { padding-top: 24px; }
+  .gallery-num {
+    font-family: var(--serif); font-style: italic; font-size: 0.82rem;
+    color: var(--gray-light); margin-bottom: 24px;
+  }
+  .gallery-title {
+    font-family: var(--serif); font-size: clamp(1.4rem, 2.5vw, 2rem);
+    font-weight: 400; line-height: 1.2; letter-spacing: -0.01em;
+    margin-bottom: 20px;
+  }
+  .gallery-medium {
+    font-size: 0.54rem; letter-spacing: 0.24em; text-transform: uppercase;
+    color: var(--gray); font-weight: 300; margin-bottom: 28px;
+    display: block;
+  }
+  .gallery-desc {
+    font-size: 0.8rem; line-height: 2.1; color: var(--gray);
+    font-weight: 300; letter-spacing: 0.03em; max-width: 420px;
+  }
+
+  .bottom-marquee { background: var(--black); padding: 20px 0; overflow: hidden; white-space: nowrap; }
+  .bottom-marquee-track { display: inline-flex; animation: marquee 24s linear infinite; }
+  .bottom-marquee-item { font-size: 0.54rem; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(255,255,255,0.35); padding: 0 36px; font-family: var(--sans); font-weight: 300; }
+  footer { background: var(--black); padding: 28px 56px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.06); font-size: 0.54rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.25); font-weight: 300; }
+  footer a { color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s; }
+  footer a:hover { color: rgba(255,255,255,0.8); }
+
+  .reveal { opacity: 0; transform: translateY(22px); transition: opacity .9s ease, transform .9s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  @media (max-width: 800px) {
+    :root { --nav-h: 60px; }
+    header { padding: 0 24px; }
+    .page-hero-inner { padding: 72px 24px 56px; }
+    .gallery { padding: 60px 24px 100px; }
+    .gallery-piece { grid-template-columns: 1fr; gap: 32px; padding: 56px 0; }
+    .gallery-meta { padding-top: 0; }
+    footer { flex-direction: column; gap: 8px; text-align: center; padding: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<header>
+  <a href="../index.html" class="brand">Mandy Cheng</a>
+  <nav class="nav-links">
+    <a href="../index.html">Portfolio</a>
+    <a href="../index.html#writing">Writing</a>
+    <a href="../resume.html">Résumé</a>
+  </nav>
+</header>
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <p class="page-hero-eyebrow">Selected Work — 01</p>
+    <h1 class="page-hero-title">Visual<br><em>Art</em></h1>
+    <p class="page-hero-desc">
+      Painting, drawing, and ink work rooted in direct observation.
+      Each piece is a study in light, form, and the quiet weight of physical space.
+    </p>
+  </div>
+</section>
+
+<div class="divider-full"></div>
+
+<section class="gallery">
+
+  <div class="gallery-piece reveal">
+    <div class="gallery-img-wrap">
+      <img src="../images/cloisters.jpg" alt="Graphite pencil drawing of The Cloisters interior courtyard in upper Manhattan">
+    </div>
+    <div class="gallery-meta">
+      <p class="gallery-num">i.</p>
+      <h2 class="gallery-title">The Cloisters</h2>
+      <span class="gallery-medium">Graphite pencil on paper</span>
+      <p class="gallery-desc">
+        A study of the medieval courtyard at The Cloisters in upper Manhattan. The repeating Gothic arches create a rhythm of light and shadow, while potted plants ground the scene in something living and present.
+      </p>
+    </div>
+  </div>
+
+  <div class="gallery-piece reveal">
+    <div class="gallery-img-wrap">
+      <img src="../images/botanical.jpg" alt="Ink wash painting of botanical leaf forms rendered in negative space">
+    </div>
+    <div class="gallery-meta">
+      <p class="gallery-num">ii.</p>
+      <h2 class="gallery-title">Botanical Negative</h2>
+      <span class="gallery-medium">Ink wash on paper</span>
+      <p class="gallery-desc">
+        An exercise in negative space — the leaves are defined not by line but by the darkness surrounding them. The ink wash gradients create atmosphere and depth while the forms stay luminous and untouched.
+      </p>
+    </div>
+  </div>
+
+  <div class="gallery-piece reveal">
+    <div class="gallery-img-wrap">
+      <img src="../images/ferry.jpg" alt="Ink wash painting of the Staten Island Ferry in morning fog">
+    </div>
+    <div class="gallery-meta">
+      <p class="gallery-num">iii.</p>
+      <h2 class="gallery-title">Morning Ferry</h2>
+      <span class="gallery-medium">Ink wash on paper</span>
+      <p class="gallery-desc">
+        The Staten Island Ferry emerging through morning fog. Heavy blacks at the waterline dissolve into soft atmospheric washes above — capturing the way the city reveals itself gradually from the harbor.
+      </p>
+    </div>
+  </div>
+
+</section>
+
+<div class="bottom-marquee">
+  <div class="bottom-marquee-track">
+    <span class="bottom-marquee-item">Painting &nbsp;—&nbsp;</span>
+    <span class="bottom-marquee-item">Drawing &nbsp;—&nbsp;</span>
+    <span class="bottom-marquee-item">Ink Wash &nbsp;—&nbsp;</span>
+    <span class="bottom-marquee-item">Graphite &nbsp;—&nbsp;</span>
+    <span class="bottom-marquee-item">Observation &nbsp;—&nbsp;</span>
+    <span class="bottom-marquee-item">Negative Space &nbsp;—&nbsp;</span>
+    <span class="bottom-marquee-item">Light &amp; Form &nbsp;—&nbsp;</span>
+    <span class="bottom-marquee-item">New York &nbsp;—&nbsp;</span>
+    <span class="bottom-marquee-item">Painting &nbsp;—&nbsp;</span>
+    <span class="bottom-marquee-item">Drawing &nbsp;—&nbsp;</span>
+    <span class="bottom-marquee-item">Ink Wash &nbsp;—&nbsp;</span>
+    <span class="bottom-marquee-item">Graphite &nbsp;—&nbsp;</span>
+    <span class="bottom-marquee-item">Observation &nbsp;—&nbsp;</span>
+    <span class="bottom-marquee-item">Negative Space &nbsp;—&nbsp;</span>
+    <span class="bottom-marquee-item">Light &amp; Form &nbsp;—&nbsp;</span>
+    <span class="bottom-marquee-item">New York &nbsp;—&nbsp;</span>
+  </div>
+</div>
+
+<footer>
+  <span>&copy; 2026 Mandy Cheng</span>
+  <span>Columbia CS &amp; Philosophy &mdash; New York</span>
+  <a href="../resume.html">Résumé ↗</a>
+</footer>
+
+<script>
+  const cursor = document.getElementById('cursor');
+  const ring   = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+  (function tick() {
+    cursor.style.left = mx + 'px'; cursor.style.top = my + 'px';
+    rx += (mx - rx) * 0.1; ry += (my - ry) * 0.1;
+    ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+    requestAnimationFrame(tick);
+  })();
+  document.querySelectorAll('a, .gallery-img-wrap').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursor.style.width  = '14px'; cursor.style.height = '14px';
+      ring.style.width    = '44px'; ring.style.height   = '44px'; ring.style.opacity = '0.45';
+    });
+    el.addEventListener('mouseleave', () => {
+      cursor.style.width  = '6px'; cursor.style.height  = '6px';
+      ring.style.width    = '30px'; ring.style.height   = '30px'; ring.style.opacity = '0.22';
+    });
+  });
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

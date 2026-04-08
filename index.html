@@ -221,23 +221,6 @@
   .project-arrow { font-size: 1rem; color: var(--border); text-align: right; transition: color 0.28s, transform 0.28s; }
   .project-row:hover .project-arrow { color: #fff; transform: translateX(5px); }
 
-  /* PROCESS */
-  .process { background: var(--off-white); padding: 120px 56px; }
-  .process-inner { max-width: 1300px; margin: 0 auto; }
-  .process-item { display: grid; grid-template-columns: 56px 1fr 1fr; gap: 40px; padding: 40px 0; border-top: 1px solid var(--border); align-items: start; }
-  .process-num { font-family: var(--serif); font-style: italic; font-size: 0.82rem; color: var(--gray-light); padding-top: 4px; }
-  .process-name { font-family: var(--serif); font-size: 1.3rem; font-weight: 400; }
-  .process-desc { font-size: 0.76rem; line-height: 1.95; color: var(--gray); font-weight: 300; }
-
-  /* CONTACT */
-  .contact { background: var(--white); padding: 160px 56px 120px; border-top: 1px solid var(--border); text-align: center; }
-  .contact-pre { font-size: 0.54rem; letter-spacing: 0.36em; text-transform: uppercase; color: var(--gray); margin-bottom: 44px; display: block; font-weight: 300; }
-  .contact-heading { font-family: var(--serif); font-weight: 400; font-size: clamp(3.5rem, 8.5vw, 8rem); line-height: 0.92; letter-spacing: -0.02em; margin-bottom: 72px; }
-  .contact-heading em { font-style: italic; }
-  .contact-links { display: flex; justify-content: center; gap: 60px; flex-wrap: wrap; }
-  .contact-link { font-size: 0.56rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gray); text-decoration: none; font-weight: 300; border-bottom: 1px solid var(--border); padding-bottom: 4px; transition: color 0.2s, border-color 0.2s; }
-  .contact-link:hover { color: var(--black); border-color: var(--black); }
-
   /* MARQUEE + FOOTER */
   .bottom-marquee { background: var(--black); padding: 20px 0; overflow: hidden; white-space: nowrap; }
   .bottom-marquee-track { display: inline-flex; animation: marquee 24s linear infinite; }
@@ -258,7 +241,7 @@
     .nav-primary { padding: 0 24px; }
     .nav-secondary-inner { gap: 28px; padding: 0 24px; overflow-x: auto; }
     .hero { padding-left: 32px; padding-right: 32px; }
-    .writing, .experience, .process, .contact { padding-left: 24px; padding-right: 24px; }
+    .writing, .experience { padding-left: 24px; padding-right: 24px; }
     .about { padding-left: 24px; padding-right: 24px; }
     .work-header, .project-row { padding-left: 24px; padding-right: 24px; }
     .hero-corner, .hero-left-rule { display: none; }
@@ -268,8 +251,6 @@
     .about-right { padding-top: 0; }
     .exp-grid, .writing-grid { grid-template-columns: 1fr; }
     .project-row { grid-template-columns: 36px 1fr 1fr 28px; }
-    .process-item { grid-template-columns: 36px 1fr; }
-    .process-desc { grid-column: 2; }
     footer { flex-direction: column; gap: 8px; text-align: center; padding: 24px; }
     .divider { margin: 0 24px; }
   }
@@ -288,7 +269,6 @@
       <a href="#writing">Writing</a>
       <a href="#work">Work</a>
       <a href="resume.html">Résumé</a>
-      <a href="#contact">Contact</a>
     </nav>
   </div>
   <div class="nav-secondary">
@@ -297,7 +277,6 @@
       <a href="#writing">Writing</a>
       <a href="#experience">Experience</a>
       <a href="#work">Selected Work</a>
-      <a href="#process">How I Work</a>
       <a href="resume.html">Résumé ↗</a>
     </div>
   </div>
@@ -449,50 +428,6 @@
     </a>
   </section>
 </div>
-
-<div class="divider-full"></div>
-
-<!-- PROCESS -->
-<section class="process" id="process">
-  <div class="process-inner">
-    <span class="section-label reveal">How I Work</span>
-    <div>
-      <div class="process-item reveal">
-        <span class="process-num">i.</span>
-        <h3 class="process-name">Spot it before it's obvious</h3>
-        <p class="process-desc">I track culture at the edges — niche forums, obscure accounts, pre-viral aesthetics — and translate early signals into creative before anyone's calling it a trend.</p>
-      </div>
-      <div class="process-item reveal">
-        <span class="process-num">ii.</span>
-        <h3 class="process-name">Direct AI, don't just use it</h3>
-        <p class="process-desc">Research-level AI fluency plus a visual eye means I don't accept the first output. I engineer, test, and refine — treating prompt craft as art direction.</p>
-      </div>
-      <div class="process-item reveal">
-        <span class="process-num">iii.</span>
-        <h3 class="process-name">Think in color and frames</h3>
-        <p class="process-desc">Hockney and Matisse taught me that color is an argument, not decoration. Film studies taught me to compose. Every project has a visual logic before it has a format.</p>
-      </div>
-      <div class="process-item reveal">
-        <span class="process-num">iv.</span>
-        <h3 class="process-name">Make it, then pitch it</h3>
-        <p class="process-desc">I prototype before I present. The work proves the idea faster than any slide deck.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section class="contact" id="contact">
-  <span class="contact-pre reveal">New York — Open to opportunities</span>
-  <h2 class="contact-heading reveal">Let's<br><em>talk.</em></h2>
-  <div class="contact-links reveal">
-    <a href="/cdn-cgi/l/email-protection#2e544d1c161d1e6e4d41425b434c474f004b4a5b" class="contact-link"><span class="__cf_email__" data-cfemail="1d677e2f252e2d5d7e727168707f747c33787968">[email&#160;protected]</span></a>
-    <a href="#" class="contact-link">Instagram</a>
-    <a href="#" class="contact-link">LinkedIn</a>
-    <a href="#" class="contact-link">Are.na</a>
-    <a href="resume.html" class="contact-link">Résumé ↗</a>
-  </div>
-</section>
 
 <!-- MARQUEE -->
 <div class="bottom-marquee">
