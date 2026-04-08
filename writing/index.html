@@ -221,18 +221,12 @@
   .project-arrow { font-size: 1rem; color: var(--border); text-align: right; transition: color 0.28s, transform 0.28s; }
   .project-row:hover .project-arrow { color: #fff; transform: translateX(5px); }
 
-  /* MARQUEE + FOOTER */
-  .bottom-marquee { background: var(--black); padding: 20px 0; overflow: hidden; white-space: nowrap; }
-  .bottom-marquee-track { display: inline-flex; animation: marquee 24s linear infinite; }
-  .bottom-marquee-item { font-size: 0.54rem; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(255,255,255,0.35); padding: 0 36px; font-family: var(--sans); font-weight: 300; }
-  footer { background: var(--black); padding: 28px 56px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.06); font-size: 0.54rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.25); font-weight: 300; }
-  footer a { color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s; }
-  footer a:hover { color: rgba(255,255,255,0.8); }
+  /* FOOTER */
+  footer { padding: 48px 56px; text-align: center; border-top: 1px solid var(--border); }
+  footer span { font-size: 0.5rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gray-light); font-weight: 300; }
 
   @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
   @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-
   .reveal { opacity: 0; transform: translateY(22px); transition: opacity .9s ease, transform .9s ease; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
@@ -251,7 +245,7 @@
     .about-right { padding-top: 0; }
     .exp-grid, .writing-grid { grid-template-columns: 1fr; }
     .project-row { grid-template-columns: 36px 1fr 1fr 28px; }
-    footer { flex-direction: column; gap: 8px; text-align: center; padding: 24px; }
+    footer { padding: 32px 24px; }
     .divider { margin: 0 24px; }
   }
 </style>
@@ -429,36 +423,8 @@
   </section>
 </div>
 
-<!-- MARQUEE -->
-<div class="bottom-marquee">
-  <div class="bottom-marquee-track">
-    <span class="bottom-marquee-item">AI Direction &nbsp;—&nbsp;</span>
-    <span class="bottom-marquee-item">Trend Intelligence &nbsp;—&nbsp;</span>
-    <span class="bottom-marquee-item">Photography &nbsp;—&nbsp;</span>
-    <span class="bottom-marquee-item">Film Studies &nbsp;—&nbsp;</span>
-    <span class="bottom-marquee-item">Painting &nbsp;—&nbsp;</span>
-    <span class="bottom-marquee-item">Social-First &nbsp;—&nbsp;</span>
-    <span class="bottom-marquee-item">Prompt Engineering &nbsp;—&nbsp;</span>
-    <span class="bottom-marquee-item">Brand Narrative &nbsp;—&nbsp;</span>
-    <span class="bottom-marquee-item">Depop Culture &nbsp;—&nbsp;</span>
-    <span class="bottom-marquee-item">Cultural Analysis &nbsp;—&nbsp;</span>
-    <span class="bottom-marquee-item">AI Direction &nbsp;—&nbsp;</span>
-    <span class="bottom-marquee-item">Trend Intelligence &nbsp;—&nbsp;</span>
-    <span class="bottom-marquee-item">Photography &nbsp;—&nbsp;</span>
-    <span class="bottom-marquee-item">Film Studies &nbsp;—&nbsp;</span>
-    <span class="bottom-marquee-item">Painting &nbsp;—&nbsp;</span>
-    <span class="bottom-marquee-item">Social-First &nbsp;—&nbsp;</span>
-    <span class="bottom-marquee-item">Prompt Engineering &nbsp;—&nbsp;</span>
-    <span class="bottom-marquee-item">Brand Narrative &nbsp;—&nbsp;</span>
-    <span class="bottom-marquee-item">Depop Culture &nbsp;—&nbsp;</span>
-    <span class="bottom-marquee-item">Cultural Analysis &nbsp;—&nbsp;</span>
-  </div>
-</div>
-
 <footer>
   <span>© 2026 Mandy Cheng</span>
-  <span>Columbia CS &amp; Philosophy — New York</span>
-  <a href="../resume.html">Résumé ↗</a>
 </footer>
 
 <script>

@@ -137,19 +137,13 @@
     font-weight: 300; letter-spacing: 0.03em; max-width: 420px;
   }
 
-  .bottom-marquee { background: var(--black); padding: 20px 0; overflow: hidden; white-space: nowrap; }
-  .bottom-marquee-track { display: inline-flex; animation: marquee 24s linear infinite; }
-  .bottom-marquee-item { font-size: 0.54rem; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(255,255,255,0.35); padding: 0 36px; font-family: var(--sans); font-weight: 300; }
-  footer { background: var(--black); padding: 28px 56px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.06); font-size: 0.54rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.25); font-weight: 300; }
-  footer a { color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s; }
-  footer a:hover { color: rgba(255,255,255,0.8); }
+  footer { padding: 48px 56px; text-align: center; border-top: 1px solid var(--border); }
+  footer span { font-size: 0.5rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gray-light); font-weight: 300; }
 
   .reveal { opacity: 0; transform: translateY(22px); transition: opacity .9s ease, transform .9s ease; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
   @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-
   @media (max-width: 800px) {
     :root { --nav-h: 60px; }
     header { padding: 0 24px; }
@@ -157,7 +151,7 @@
     .gallery { padding: 60px 24px 100px; }
     .gallery-piece { grid-template-columns: 1fr; gap: 32px; padding: 56px 0; }
     .gallery-meta { padding-top: 0; }
-    footer { flex-direction: column; gap: 8px; text-align: center; padding: 24px; }
+    footer { padding: 32px 24px; }
   }
 </style>
 </head>
@@ -234,31 +228,8 @@
 
 </section>
 
-<div class="bottom-marquee">
-  <div class="bottom-marquee-track">
-    <span class="bottom-marquee-item">Painting &nbsp;—&nbsp;</span>
-    <span class="bottom-marquee-item">Drawing &nbsp;—&nbsp;</span>
-    <span class="bottom-marquee-item">Ink Wash &nbsp;—&nbsp;</span>
-    <span class="bottom-marquee-item">Graphite &nbsp;—&nbsp;</span>
-    <span class="bottom-marquee-item">Observation &nbsp;—&nbsp;</span>
-    <span class="bottom-marquee-item">Negative Space &nbsp;—&nbsp;</span>
-    <span class="bottom-marquee-item">Light &amp; Form &nbsp;—&nbsp;</span>
-    <span class="bottom-marquee-item">New York &nbsp;—&nbsp;</span>
-    <span class="bottom-marquee-item">Painting &nbsp;—&nbsp;</span>
-    <span class="bottom-marquee-item">Drawing &nbsp;—&nbsp;</span>
-    <span class="bottom-marquee-item">Ink Wash &nbsp;—&nbsp;</span>
-    <span class="bottom-marquee-item">Graphite &nbsp;—&nbsp;</span>
-    <span class="bottom-marquee-item">Observation &nbsp;—&nbsp;</span>
-    <span class="bottom-marquee-item">Negative Space &nbsp;—&nbsp;</span>
-    <span class="bottom-marquee-item">Light &amp; Form &nbsp;—&nbsp;</span>
-    <span class="bottom-marquee-item">New York &nbsp;—&nbsp;</span>
-  </div>
-</div>
-
 <footer>
   <span>&copy; 2026 Mandy Cheng</span>
-  <span>Columbia CS &amp; Philosophy &mdash; New York</span>
-  <a href="../resume.html">Résumé ↗</a>
 </footer>
 
 <script>
