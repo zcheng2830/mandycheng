@@ -1,101 +1,304 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Simple Healthy Recipes</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  <link rel="stylesheet" href="static/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simple Healthy Recipes — Mandy Cheng</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #f0ebe0;
+    --cream-mid: #d8d2c4;
+    --white: #ffffff;
+    --off-white: #fafaf8;
+    --black: #1a1814;
+    --gray: #7a7469;
+    --gray-light: #b8b2a7;
+    --border: #e4e0d8;
+    --serif: 'Bodoni Moda', 'Didot', Georgia, serif;
+    --sans: 'Jost', 'Futura', sans-serif;
+    --nav-h: 72px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--white);
+    color: var(--black);
+    font-family: var(--sans);
+    font-weight: 200;
+    overflow-x: hidden;
+  }
+
+  header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    background: var(--cream); border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 56px; height: var(--nav-h);
+  }
+  .brand {
+    font-family: var(--serif); font-size: 1.1rem; font-weight: 400;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--black); text-decoration: none;
+  }
+  .nav-links { display: flex; align-items: center; gap: 40px; }
+  .nav-links a {
+    font-size: 0.6rem; letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--gray); text-decoration: none; font-weight: 300; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--black); }
+
+  .hero {
+    min-height: 100vh;
+    background: var(--cream);
+    padding-top: var(--nav-h);
+    display: flex; align-items: center;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    background-size: 180px 180px; opacity: 0.45;
+    pointer-events: none; z-index: 0;
+  }
+  .hero-inner {
+    position: relative; z-index: 1;
+    width: 100%; max-width: 1300px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr;
+    align-items: center; padding: 0 80px;
+  }
+  .hero-title {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(3.2rem, 7vw, 6.5rem);
+    line-height: 0.92; letter-spacing: -0.02em;
+  }
+  .hero-title em { font-style: italic; }
+  .hero-right {
+    padding-left: 60px; border-left: 1px solid var(--cream-mid);
+  }
+  .hero-label {
+    font-size: 0.54rem; letter-spacing: 0.34em; text-transform: uppercase;
+    color: var(--gray); font-weight: 300; margin-bottom: 28px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .hero-label::before {
+    content: ''; display: inline-block; width: 24px; height: 1px;
+    background: var(--gray-light); flex-shrink: 0;
+  }
+  .hero-desc {
+    font-size: 0.8rem; line-height: 2.1;
+    letter-spacing: 0.03em; color: var(--gray); font-weight: 300;
+  }
+  .hero-cta-row {
+    display: flex; align-items: center; gap: 0;
+    margin-top: 40px; border-top: 1px solid var(--border); padding-top: 20px;
+  }
+  .hero-cta {
+    font-size: 0.54rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--gray); text-decoration: none; font-weight: 300;
+    padding: 0 24px 0 0; margin-right: 24px;
+    border-right: 1px solid var(--border); transition: color 0.22s;
+  }
+  .hero-cta:last-child { border-right: none; margin-right: 0; }
+  .hero-cta:hover { color: var(--black); }
+
+  .divider-full { height: 1px; background: var(--border); }
+  .section-label {
+    font-size: 0.54rem; letter-spacing: 0.36em; text-transform: uppercase;
+    color: var(--gray); margin-bottom: 48px; display: block; font-weight: 300;
+  }
+
+  .features {
+    background: var(--white); padding: 120px 56px;
+    max-width: 1300px; margin: 0 auto;
+  }
+  .features-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1px; background: var(--border); border: 1px solid var(--border);
+  }
+  .feature {
+    padding: 56px 40px; background: var(--white);
+    transition: background 0.25s;
+  }
+  .feature:hover { background: var(--off-white); }
+  .feature-num {
+    font-family: var(--serif); font-style: italic;
+    font-size: 0.82rem; color: var(--gray-light); margin-bottom: 20px;
+  }
+  .feature-name {
+    font-family: var(--serif); font-size: 1.2rem;
+    font-weight: 400; margin-bottom: 16px;
+  }
+  .feature-desc {
+    font-size: 0.76rem; line-height: 1.95;
+    color: var(--gray); font-weight: 300;
+  }
+
+  .metrics {
+    background: var(--off-white); padding: 100px 56px;
+  }
+  .metrics-inner {
+    max-width: 1300px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 80px; text-align: center;
+  }
+  .metric-val {
+    font-family: var(--serif); font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 400; line-height: 1; letter-spacing: -0.02em;
+  }
+  .metric-label {
+    font-size: 0.54rem; letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--gray); font-weight: 300; margin-top: 12px;
+  }
+
+  .context {
+    background: var(--white); padding: 120px 56px;
+    max-width: 1300px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1.5fr; gap: 100px;
+    align-items: start;
+  }
+  .context-heading {
+    font-family: var(--serif); font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 400; line-height: 1.18; letter-spacing: -0.01em;
+  }
+  .context-heading em { font-style: italic; }
+  .context-body {
+    padding-top: 12px;
+    font-size: 0.8rem; line-height: 2.15;
+    color: var(--gray); font-weight: 300; letter-spacing: 0.04em;
+  }
+
+  footer {
+    padding: 48px 56px; text-align: center;
+    border-top: 1px solid var(--border);
+  }
+  footer span {
+    font-size: 0.5rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--gray-light); font-weight: 300;
+  }
+
+  .reveal { opacity: 0; transform: translateY(22px); transition: opacity .9s ease, transform .9s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 800px) {
+    :root { --nav-h: 60px; }
+    header { padding: 0 24px; }
+    .hero-inner { grid-template-columns: 1fr; padding: 0 28px; gap: 40px; }
+    .hero-right { padding-left: 0; border-left: none; border-top: 1px solid var(--cream-mid); padding-top: 32px; }
+    .hero-title { font-size: clamp(2.8rem, 14vw, 4.5rem); }
+    .features { padding: 80px 24px; }
+    .features-grid { grid-template-columns: 1fr; }
+    .metrics { padding: 64px 24px; }
+    .metrics-inner { grid-template-columns: 1fr; gap: 48px; }
+    .context { grid-template-columns: 1fr; gap: 40px; padding: 80px 24px; }
+    footer { padding: 32px 24px; }
+  }
+</style>
 </head>
-<body class="theme-base">
-  <nav class="navbar navbar-expand-lg fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="index.html">
-        <span class="brand-mark">Nutri</span>Cook
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="mainNav">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="index.html">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="safety.html">Learn</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="ingMenu" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ingredients</a>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="protein.html">Proteins</a>
-              <a class="dropdown-item" href="vegetable.html">Vegetables</a>
-              <a class="dropdown-item" href="base.html">Bases</a>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="quiz.html">Quiz</a>
-          </li>
-        </ul>
+<body>
+
+<header>
+  <a href="../index.html" class="brand">Mandy Cheng</a>
+  <nav class="nav-links">
+    <a href="../index.html">Portfolio</a>
+    <a href="safety.html">Learn</a>
+    <a href="quiz.html">Quiz</a>
+    <a href="game.html">Play</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <h1 class="hero-title">Simple<br>Healthy<br><em>Recipes</em></h1>
+    </div>
+    <div class="hero-right">
+      <p class="hero-label">Columbia University — UX Design</p>
+      <p class="hero-desc">
+        A gamified nutrition web app designed for beginners. Quick lessons, interactive ingredient cards, and a hands-on cooking challenge — built to make kitchen confidence feel effortless, not overwhelming.
+      </p>
+      <p class="hero-desc" style="margin-top: 18px;">
+        Grounded in user research and narrative-based learning. The interface prioritizes feel over feature count — information architecture, storytelling logic, and visual clarity working together.
+      </p>
+      <div class="hero-cta-row">
+        <a href="safety.html" class="hero-cta">Start Learning</a>
+        <a href="quiz.html" class="hero-cta">Take the Quiz</a>
+        <a href="game.html" class="hero-cta">Play the Game</a>
       </div>
     </div>
-  </nav>
+  </div>
+</section>
 
-  <main class="site-shell">
-    <div class="container py-4">
-      <section class="home-hero surface-card" data-reveal>
-        <p class="eyebrow">Simple Healthy Recipes</p>
-        <h1 class="home-title">Cook better. Eat smarter. Feel stronger.</h1>
-        <p class="home-description">
-          NutriCook combines quick lessons, interactive ingredient cards, and a playful cooking challenge so
-          beginners can build kitchen confidence without complexity.
-        </p>
-        <div class="hero-actions">
-          <a href="safety.html" class="btn btn-primary btn-lg">Start Learning</a>
-          <a href="quiz.html" class="btn btn-outline-secondary btn-lg">Take the Quiz</a>
-        </div>
-        <div class="hero-metrics">
-          <div class="metric-card">
-            <span class="metric-value">3</span>
-            <span class="metric-label">Hands-on lessons</span>
-          </div>
-          <div class="metric-card">
-            <span class="metric-value">15</span>
-            <span class="metric-label">Nutrition cards</span>
-          </div>
-          <div class="metric-card">
-            <span class="metric-value">1</span>
-            <span class="metric-label">Pasta mini game</span>
-          </div>
-        </div>
-      </section>
+<div class="divider-full"></div>
 
-      <section class="feature-strip" data-reveal>
-        <article class="feature-item">
-          <i class="fas fa-shield-alt"></i>
-          <h3>Safety First</h3>
-          <p>Learn practical habits that make your kitchen safer from day one.</p>
-        </article>
-        <article class="feature-item">
-          <i class="fas fa-seedling"></i>
-          <h3>Nutrition Basics</h3>
-          <p>Flip through protein, vegetable, and base cards with real nutrient data.</p>
-        </article>
-        <article class="feature-item">
-          <i class="fas fa-utensils"></i>
-          <h3>Cook by Doing</h3>
-          <p>Practice sequence and timing through an interactive pasta challenge.</p>
-        </article>
-      </section>
+<section class="metrics reveal">
+  <div class="metrics-inner">
+    <div>
+      <p class="metric-val">3</p>
+      <p class="metric-label">Hands-on lessons</p>
     </div>
-  </main>
+    <div>
+      <p class="metric-val">15</p>
+      <p class="metric-label">Nutrition cards</p>
+    </div>
+    <div>
+      <p class="metric-val">1</p>
+      <p class="metric-label">Pasta mini game</p>
+    </div>
+  </div>
+</section>
 
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script src="static/script.js"></script>
+<div class="divider-full"></div>
+
+<section class="features reveal">
+  <span class="section-label">What's Inside</span>
+  <div class="features-grid">
+    <div class="feature">
+      <p class="feature-num">i.</p>
+      <h3 class="feature-name">Safety First</h3>
+      <p class="feature-desc">Learn practical habits that make your kitchen safer from day one — the foundation before you cook anything.</p>
+    </div>
+    <div class="feature">
+      <p class="feature-num">ii.</p>
+      <h3 class="feature-name">Nutrition Basics</h3>
+      <p class="feature-desc">Flip through protein, vegetable, and base cards with real nutrient data. Know what you're eating, visually.</p>
+    </div>
+    <div class="feature">
+      <p class="feature-num">iii.</p>
+      <h3 class="feature-name">Cook by Doing</h3>
+      <p class="feature-desc">Practice sequence and timing through an interactive pasta challenge. Learning by making, not reading.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider-full"></div>
+
+<section class="context reveal">
+  <div>
+    <span class="section-label">Design Context</span>
+    <h2 class="context-heading">Function through<br>a <em>creative</em> lens.</h2>
+  </div>
+  <div>
+    <p class="context-body">
+      This project was designed at Columbia as a narrative UX exercise — how do you teach nutrition to someone who's never cooked? The answer wasn't a recipe database. It was a guided experience: safety first, ingredients second, cooking third.
+      <br><br>
+      Every screen was designed to reduce cognitive load. Flip cards instead of tables. Drag-and-drop instead of instructions. A quiz that reinforces, not tests. The visual language borrows from gamified learning apps but strips away the noise — letting the content breathe.
+      <br><br>
+      Built with Flask, vanilla JS, and a lot of user testing.
+    </p>
+  </div>
+</section>
+
+<footer>
+  <span>&copy; 2026 Mandy Cheng</span>
+</footer>
+
+<script>
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
 </body>
 </html>
